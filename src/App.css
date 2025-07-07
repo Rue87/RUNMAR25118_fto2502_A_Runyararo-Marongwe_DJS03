@@ -142,16 +142,16 @@ h3 {
   width: 40px;
   height: 40px;
   border: 6px solid #ccc;
-  border-top: 6px solid #007bff; /* Customize spinner color */
+  border-top: 6px solid #007bff;
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
 
-@keyframes logo-spin {
-  from {
+@keyframes spin {
+  0% {
     transform: rotate(0deg);
   }
-  to {
+  100% {
     transform: rotate(360deg);
   }
 }
