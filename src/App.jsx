@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import PodcastCard from './components/PodcastCard';
+import PodcastCard from './components/PodcastCard.jsx';
 import './App.css';
 
 /**
@@ -64,10 +64,7 @@ useEffect(() => {
 
         {podcasts.map(podcast => (
            <PodcastCard key={podcast.id} podcast={podcast} />
-          //<div key={podcast.id} className="podcast-card">
-           // <img src={podcast.image} alt={podcast.title} className="podcast-image" />
-           // <h3 className='podcast-title'>{podcast.title}</h3>
-        ))}
+         ))}
           </div>
           </>
         );
