@@ -1,7 +1,7 @@
 import React from 'react';
 import '../App.css'; 
 import { genres } from '../data/data.js'; // Import genres data
-
+import { formatDate } from '../utils/dateUtils.js';
 /**
  * PodcastCard component renders an individual podcast's preview card.
  *
@@ -12,6 +12,7 @@ import { genres } from '../data/data.js'; // Import genres data
  * @param {string} props.podcast.title - Title of the podcast.
  * @param {number} props.podcast.seasons - Number of seasons.
  * @param {Array<number>} props.podcast.genres - List of genre IDs.
+ * @param {string} props.podcast.updated - ISO string for the last updated date.
  *
  * @returns {JSX.Element} A card displaying the podcast's image, title, seasons, and genres.
  */
@@ -41,6 +42,11 @@ const PodcastCard = ({ podcast }) => {
        <div className="podcast-genres">
         {genreTitles.length > 0 ? genreTitles.join(', ') : 'No genres found'}
       </div>
+       {podcast.updated && (
+        <small className="podcast-updated">
+          Last updated: {formatDate(podcast.updated)}
+        </small>
+       )}
     </div>
   );
 };

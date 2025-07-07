@@ -100,8 +100,27 @@ h3 {
   color: #555;
   margin-bottom: 1rem;
 }
-
-
+.podcast-updated {
+  font-size: 0.85rem;
+  color: #555;
+  margin-top: 4px;
+}
+/* Spinner Styles */
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #ffffff;
+}
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 6px solid #ccc;
+  border-top: 6px solid #007bff; /* Customize spinner color */
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
 
 @keyframes logo-spin {
   from {

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import PodcastCard from './components/PodcastCard.jsx';
 import './App.css';
-
+import Loader from './components/Loader'; 
 /**
  * Main App component that fetches podcast data on load.
  * @component
@@ -44,7 +44,8 @@ useEffect(() => {
 
   if (isLoading) {
     // Show loading message while fetching
-    return <div className="loading">Loading podcasts...</div>
+    //return <div className="loading">Loading podcasts...</div>
+    return <Loader />;
   }
 
   if (hasError) {
