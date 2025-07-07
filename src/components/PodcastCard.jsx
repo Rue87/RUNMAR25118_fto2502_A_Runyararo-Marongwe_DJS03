@@ -39,9 +39,19 @@ const PodcastCard = ({ podcast }) => {
       <p className="podcast-seasons">
         {podcast.seasons ? `${podcast.seasons} season${podcast.seasons > 1 ? 's' : ''}`:'Season info not available'}
       </p>
-       <div className="podcast-genres">
-        {genreTitles.length > 0 ? genreTitles.join(', ') : 'No genres found'}
-      </div>
+      <div className="podcast-genres">
+  {genreTitles.length > 0 ? (
+    genreTitles.map((title, index) => (
+      <span key={index} className="genre-badge">
+        {title}
+      </span>
+    ))
+  ) : (
+    'No genres found'
+  )}
+</div>
+
+      
        {podcast.updated && (
         <small className="podcast-updated">
           Last updated: {formatDate(podcast.updated)}
