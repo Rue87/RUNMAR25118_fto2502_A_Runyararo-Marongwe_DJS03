@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import PodcastCard from './components/PodcastCard';
 import './App.css';
 
 /**
@@ -31,6 +32,7 @@ useEffect(() => {
     .then(data => {
         setPodcasts(data);      // Save data in state
         setIsLoading(false);    // Loading finished
+        console.log(data[0]);
       })
 
       .catch(error => {
@@ -61,14 +63,15 @@ useEffect(() => {
       <div className="podcast-grid">
 
         {podcasts.map(podcast => (
-          <div key={podcast.id} className="podcast-card">
-            <img src={podcast.image} alt={podcast.title} className="podcast-image" />
-            <h3 className='podcast-title'>{podcast.title}</h3>
-          </div>
+           <PodcastCard key={podcast.id} podcast={podcast} />
+          //<div key={podcast.id} className="podcast-card">
+           // <img src={podcast.image} alt={podcast.title} className="podcast-image" />
+           // <h3 className='podcast-title'>{podcast.title}</h3>
         ))}
-      </div>
-    </>
-  );
+          </div>
+          </>
+        );
+    
 }
 
 export default App;

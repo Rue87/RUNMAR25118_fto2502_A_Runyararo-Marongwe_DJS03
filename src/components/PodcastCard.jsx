@@ -1,5 +1,6 @@
 import React from 'react';
-import 'App.css'; // optional, for card-specific styles
+import '../App.css'; 
+import { genres } from '../data';
 
 /**
  * PodcastCard component displays a podcast image and title.
@@ -17,6 +18,9 @@ const PodcastCard = ({ podcast }) => {
         }}
       />
       <h3 className="podcast-title">{podcast.title}</h3>
+      <p className="podcast-seasons">
+        {podcast.seasons ? `${podcast.seasons} season${podcast.seasons> 1 ? 's' : ''}`:'Season info not available'}
+      </p>
     </div>
   );
 };
