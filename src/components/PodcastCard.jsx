@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import '../App.css'; 
 import { genres } from '../data/data.js'; // Import genres data
 import { formatDate } from '../utils/dateUtils.js';
@@ -16,49 +16,48 @@ import { formatDate } from '../utils/dateUtils.js';
  *
  * @returns {JSX.Element} A card displaying the podcast's image, title, seasons, and genres.
  */
-const PodcastCard = ({ podcast }) => {
-  // Map genre IDs to their corresponding titles
-  const genreTitles = podcast.genres
-    ? podcast.genres.map(id => {
-        const genre = genres.find(g => g.id === id);
-         return genre ? genre.title : 'Unknown';
-      })
-    : [];
-  return (
-    <div className="podcast-card">
-      <img
-        src={podcast.image}
-        alt={podcast.title}
-        className="podcast-image"
-        onError={(e) => {
-          e.target.src = 'https://via.placeholder.com/300x300?text=No+Image'
-; 
-        }}
-      />
-      <h3 className="podcast-title">{podcast.title}</h3>
-      <p className="podcast-seasons">
-        {podcast.seasons ? `${podcast.seasons} season${podcast.seasons > 1 ? 's' : ''}`:'Season info not available'}
-      </p>
-      <div className="podcast-genres">
-  {genreTitles.length > 0 ? (
-    genreTitles.map((title, index) => (
-      <span key={index} className="genre-badge">
-        {title}
-      </span>
-    ))
-  ) : (
-    'No genres found'
-  )}
-</div>
 
-      
-       {podcast.updated && (
-        <small className="podcast-updated">
-          Last updated: {formatDate(podcast.updated)}
-        </small>
-       )}
-    </div>
-  );
-};
+
+class PodcastCard extends Component {
+  render() {
+    const { image, title, seasons, genres: genreIds, updated } = this.props.podcast;
+
+    const genreTitles = genreIds
+      ? genreIds.map(id => {
+          const genre = genres.find(g => g.id === id);
+          return genre ? genre.title : 'Unknown';
+        })
+      : [];
+
+    return (
+      <div className="podcast-card">
+        <img
+          src={image}
+          alt={title}
+          className="podcast-image"
+          onError={(e) => {
+            e.target.src = 'https://via.placeholder.com/300x300?text=No+Image';
+          }}
+        />
+        <h3 className="podcast-title">{title}</h3>
+        <p className="podcast-seasons">
+          {seasons ? `${seasons} season${seasons > 1 ? 's' : ''}` : 'Season info not available'}
+        </p>
+        <div className="podcast-genres">
+          {genreTitles.length > 0 ? (
+            genreTitles.map((genre, index) => (
+              <span key={index} className="genre-badge">{genre}</span>
+            ))
+          ) : (
+            'No genres found'
+          )}
+        </div>
+        {updated && (
+          <small className="podcast-updated">Last updated: {formatDate(updated)}</small>
+        )}
+      </div>
+    );
+  }
+}
 
 export default PodcastCard;

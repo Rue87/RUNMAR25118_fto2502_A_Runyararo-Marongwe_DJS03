@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import PodcastCard from './components/PodcastCard.jsx';
 import './App.css';
 import Loader from './components/Loader'; 
+import Header from './components/Header.jsx';
 /**
  * Main App component that fetches podcast data on load.
  * @component
@@ -60,17 +61,26 @@ useEffect(() => {
   // Render podcasts list once data is loaded and no errors
   return (
     <>
-      <h1>Podcast Discovery</h1>
+     <Header />
       <div className="podcast-grid">
+  
+      <div className="filter-section">
+        <span className="filter-label">Filter By:</span>
+        <button className="filter-button">
+          All Genres <span className="arrow">⌄</span>
+        </button>
+        <button className="filter-button">
+          Recently Updated <span className="arrow">⌄</span>
+        </button>
+        </div>
 
         {podcasts.map(podcast => (
            <PodcastCard key={podcast.id} podcast={podcast} />
          ))}
           </div>
           </>
-        );
-    
-}
+  );
+    }
 
 export default App;
      
