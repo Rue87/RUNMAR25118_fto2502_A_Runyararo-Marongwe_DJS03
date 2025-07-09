@@ -20,8 +20,10 @@ import { formatDate } from '../utils/dateUtils.js';
 
 class PodcastCard extends Component {
   render() {
+   // Destructuring podcast props
     const { image, title, seasons, genres: genreIds, updated } = this.props.podcast;
 
+   // Mapping genre IDs to genre titles
     const genreTitles = genreIds
       ? genreIds.map(id => {
           const genre = genres.find(g => g.id === id);
@@ -35,6 +37,8 @@ class PodcastCard extends Component {
           src={image}
           alt={title}
           className="podcast-image"
+
+          // Fallback image if source fails to load
           onError={(e) => {
             e.target.src = 'https://via.placeholder.com/300x300?text=No+Image';
           }}

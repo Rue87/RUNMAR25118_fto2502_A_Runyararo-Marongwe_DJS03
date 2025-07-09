@@ -13,7 +13,7 @@ function App () {
  //state to store fetched podcast data
   const [podcasts, setPodcasts] = useState([]);
  // State to track if data is currently loading
-   const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   // State to track if an error occurred during fetch
   const [hasError, setHasError] = useState(false);
@@ -62,8 +62,7 @@ useEffect(() => {
   return (
     <>
      <Header />
-      <div className="podcast-grid">
-  
+      
       <div className="filter-section">
         <span className="filter-label">Filter By:</span>
         <button className="filter-button">
@@ -73,7 +72,7 @@ useEffect(() => {
           Recently Updated <span className="arrow">⌄</span>
         </button>
         </div>
-
+      <div className="podcast-grid">
         {podcasts.map(podcast => (
            <PodcastCard key={podcast.id} podcast={podcast} />
          ))}
